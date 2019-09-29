@@ -1,28 +1,30 @@
-package one;
+package main.java.solutions._1;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class TwoSum {
+    private static final String SEPARTOR = ",";
 
     public static void main(String[] args) {
-
         Scanner scanner = new Scanner(System.in);
         String numsStr = scanner.nextLine();
         int target = scanner.nextInt();
-        String[] numsStrings = numsStr.split(",");
+        String[] numsStrings = numsStr.split(SEPARTOR);
         int num = numsStrings.length;
         int[] nums = new int[num];
         for (int i = 0; i < num; i++) {
             nums[i] = Integer.parseInt(numsStrings[i]);
         }
         int[] results = twoSum(nums, target);
+        if (results == null) {
+            return;
+        }
         for (int result : results) {
             System.out.println(result);
         }
     }
 
-    public static int[] twoSum(int[] nums, int target) {
+    private static int[] twoSum(int[] nums, int target) {
         int index1, index2;
         int length = nums.length;
         for (index1 = 0; index1 < length; index1++) {
@@ -34,7 +36,7 @@ public class TwoSum {
         return null;
     }
 
-    public static int find(int[] nums, int target, int index1) {
+    private static int find(int[] nums, int target, int index1) {
         int length = nums.length;
         for (int i = 0; i < length; i++) {
             if (nums[i] == target && i != index1) {
